@@ -1,0 +1,61 @@
+# ==============================================================================
+# Нормализация строк
+# ==============================================================================
+* text=auto eol=lf
+
+# ==============================================================================
+# Текстовые файлы проекта
+# ==============================================================================
+*.blade.php text eol=lf diff=html
+*.css text eol=lf diff=css
+*.env.example text eol=lf
+*.html text eol=lf diff=html
+*.js text eol=lf diff=javascript
+*.jsx text eol=lf diff=javascript
+*.json text eol=lf
+*.lock text eol=lf
+*.md text eol=lf diff=markdown
+*.php text eol=lf diff=php
+*.ts text eol=lf diff=javascript
+*.tsx text eol=lf diff=javascript
+*.xml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Windows-скрипты должны оставаться с CRLF.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# ==============================================================================
+# Бинарные файлы
+# ==============================================================================
+*.avif binary
+*.eot binary
+*.gif binary
+*.ico binary
+*.jpeg binary
+*.jpg binary
+*.mp4 binary
+*.otf binary
+*.pdf binary
+*.png binary
+*.svg text eol=lf
+*.ttf binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+*.zip binary
+
+# ==============================================================================
+# Исключения из git archive
+# ==============================================================================
+/.codex export-ignore
+/.cursor export-ignore
+/.github export-ignore
+/.idea export-ignore
+/.nova export-ignore
+/.vscode export-ignore
+/.zed export-ignore
+CHANGELOG.md export-ignore
+/backend/CHANGELOG.md export-ignore
+/backend/.styleci.yml export-ignore
