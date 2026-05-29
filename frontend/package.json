@@ -14,7 +14,6 @@
     "devDependencies": {
         "@headlessui/react": "^2.0.0",
         "@inertiajs/react": "^3.2.0",
-        "@rolldown/binding-win32-x64-msvc": "^1.0.2",
         "@tailwindcss/forms": "^0.5.3",
         "@tailwindcss/vite": "^4.3.0",
         "@types/node": "^18.13.0",

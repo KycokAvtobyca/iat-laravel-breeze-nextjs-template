@@ -1,0 +1,60 @@
+services:
+    # Веб-сервер Nginx
+    web:
+        image: nginx:alpine
+        container_name: laravel_nginx
+        ports:
+            - "8080:80"
+        volumes:
+            - ./backend:/var/www/html
+            - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf
+        depends_on:
+            - php
+            - mysql
+
+    # Интерпретатор PHP + расширения для Laravel
+    php:
+        # image: php:8.3-fpm
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: flowers_shop_php:8.3
+        container_name: laravel_php
+        volumes:
+            - ./backend:/var/www/html
+        depends_on:
+            - mysql
+        working_dir: /var/www/html
+
+    # База данных MySQL
+    mysql:
+        image: mysql:8
+        container_name: laravel_mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: root_password
+            MYSQL_DATABASE: laravel_23063_up_flowers
+            MYSQL_USER: laravel_user
+            MYSQL_PASSWORD: laravel_password
+        ports:
+            - "3306:3306"
+        volumes:
+            - laravel_db_data:/var/lib/mysql
+    
+    # Фронтенд на Vite + Bun
+    frontend:
+        image: oven/bun:alpine
+        container_name: react_frontend
+        working_dir: /app
+        volumes:
+            - ./frontend:/app
+            - ./backend:/app/backend # Чтобы Vite мог обращаться к API Laravel
+        ports:
+            - "5173:5173"
+        environment:
+            - WATCHPACK_POLLING=true # Чтобы Vite видел изменения файлов из Windows
+        command: sh -c "bun install && bun run dev --host 0.0.0.0"
+        depends_on:
+            - php
+volumes:
+    laravel_db_data:

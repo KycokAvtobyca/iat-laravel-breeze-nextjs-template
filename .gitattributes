@@ -1,54 +1,75 @@
-# ==============================================================================
-# Нормализация строк
-# ==============================================================================
+# Line endings
 * text=auto eol=lf
 
-# ==============================================================================
-# Текстовые файлы проекта
-# ==============================================================================
+# PHP / Laravel
+*.php text eol=lf diff=php
 *.blade.php text eol=lf diff=html
+*.stub text eol=lf
+
+# Frontend
 *.css text eol=lf diff=css
-*.env.example text eol=lf
 *.html text eol=lf diff=html
 *.js text eol=lf diff=javascript
 *.jsx text eol=lf diff=javascript
-*.json text eol=lf
-*.lock text eol=lf
-*.md text eol=lf diff=markdown
-*.php text eol=lf diff=php
 *.ts text eol=lf diff=javascript
 *.tsx text eol=lf diff=javascript
+*.json text eol=lf
+*.lock text eol=lf
+
+# Config and docs
+*.conf text eol=lf
+*.editorconfig text eol=lf
+*.env.example text eol=lf
+*.env*.example text eol=lf
+*.ini text eol=lf
+*.md text eol=lf diff=markdown
+*.neon text eol=lf
+*.toml text eol=lf
 *.xml text eol=lf
 *.yml text eol=lf
 *.yaml text eol=lf
 
-# Windows-скрипты должны оставаться с CRLF.
+# Docker
+Dockerfile text eol=lf
+Dockerfile.* text eol=lf
+*.dockerfile text eol=lf
+.dockerignore text eol=lf
+docker-compose*.yml text eol=lf
+docker-compose*.yaml text eol=lf
+compose*.yml text eol=lf
+compose*.yaml text eol=lf
+docker/**/*.conf text eol=lf
+
+# Shell scripts for Linux containers
+*.sh text eol=lf
+
+# Windows scripts
 *.bat text eol=crlf
 *.cmd text eol=crlf
+*.ps1 text eol=crlf
 
-# ==============================================================================
-# Бинарные файлы
-# ==============================================================================
+# Binary assets
 *.avif binary
 *.eot binary
 *.gif binary
 *.ico binary
 *.jpeg binary
 *.jpg binary
+*.mp3 binary
 *.mp4 binary
 *.otf binary
 *.pdf binary
 *.png binary
-*.svg text eol=lf
 *.ttf binary
 *.webp binary
 *.woff binary
 *.woff2 binary
 *.zip binary
 
-# ==============================================================================
-# Исключения из git archive
-# ==============================================================================
+# SVG is text and should diff cleanly.
+*.svg text eol=lf
+
+# Exclude local/dev-only files from generated archives.
 /.codex export-ignore
 /.cursor export-ignore
 /.github export-ignore
@@ -56,6 +77,12 @@
 /.nova export-ignore
 /.vscode export-ignore
 /.zed export-ignore
+/.docker export-ignore
+/docker/data export-ignore
+/backend/public/build export-ignore
+/backend/bootstrap/ssr export-ignore
+/frontend/node_modules export-ignore
+/backend/vendor export-ignore
 CHANGELOG.md export-ignore
 /backend/CHANGELOG.md export-ignore
 /backend/.styleci.yml export-ignore

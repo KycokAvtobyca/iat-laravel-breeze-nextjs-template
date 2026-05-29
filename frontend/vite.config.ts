@@ -6,16 +6,22 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
     server: {
-        host: '127.0.0.1',
+        host: '0.0.0.0',
         port: 5173,
+        strictPort: true,
+        hmr: {
+            host: 'localhost',
+            clientPort: 5173,
+        },
+        ...(process.env.VITE_DOCKER === 'true' ? { watch: { usePolling: true } } : {}),
     },
     plugins: [
         laravel({
-            publicDirectory: '../backend/public',
+            publicDirectory: 'backend/public',
             buildDirectory: 'build',
             input: 'src/app/app.tsx',
             ssr: 'src/app/ssr.tsx',
-            ssrOutputDirectory: '../backend/bootstrap/ssr',
+            ssrOutputDirectory: 'backend/bootstrap/ssr',
             refresh: true,
         }),
         react(),

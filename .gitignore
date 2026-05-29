@@ -1,43 +1,89 @@
-# ==============================================================================
-# Зависимости
-# ==============================================================================
+# Dependencies
 **/node_modules/
 **/vendor/
 
-# ==============================================================================
-# Сборка и кэш
-# ==============================================================================
-**/public/build/
-**/public/hot
-**/public/storage
-**/bootstrap/ssr/
+# Local Composer binary
+/backend/composer
+composer.phar
+
+# Frontend builds and caches
 **/dist/
 **/.vite/
+**/.bun/
+**/.turbo/
+**/.eslintcache
+
+# Laravel Vite build and dev-server files
+**/public/build/
+**/public/hot
+**/public/fonts-manifest.dev.json
+**/bootstrap/ssr/
+
+# Laravel generated files
+**/public/storage
+**/storage/*.key
+**/storage/pail/
+**/storage/logs/*
+!**/storage/logs/.gitignore
+**/storage/framework/cache/*
+!**/storage/framework/cache/.gitignore
+!**/storage/framework/cache/data/
+**/storage/framework/cache/data/*
+!**/storage/framework/cache/data/.gitignore
+**/storage/framework/sessions/*
+!**/storage/framework/sessions/.gitignore
+**/storage/framework/testing/*
+!**/storage/framework/testing/.gitignore
+**/storage/framework/views/*
+!**/storage/framework/views/.gitignore
+**/bootstrap/cache/*.php
+!**/bootstrap/cache/.gitignore
+
+# Test and tool caches
 .phpunit.cache/
 .phpunit.result.cache
 .pest_tracker
+coverage/
 
-# ==============================================================================
-# Конфиденциальные данные и окружение
-# ==============================================================================
+# Environment and secrets
 .env
 .env.*
 !.env.example
+!.env*.example
 auth.json
 
-# ==============================================================================
-# Логи, временные файлы и локальные базы
-# ==============================================================================
+# Docker local overrides and host-mounted data
+docker-compose.override.yml
+docker-compose.override.yaml
+compose.override.yml
+compose.override.yaml
+docker-compose*.local.yml
+docker-compose*.local.yaml
+compose*.local.yml
+compose*.local.yaml
+.docker/
+docker/data/
+docker/mysql/
+docker/postgres/
+docker/redis/
+
+# Logs and local databases
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+bun-debug.log*
 *.sqlite
 *.sqlite-*
-Thumbs.db
-.DS_Store
-desktop.ini
 
-# ==============================================================================
-# IDE, редакторы и локальные инструменты
-# ==============================================================================
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# IDEs and local tooling
 .idea/
 .vscode/
 .cursor/
@@ -47,10 +93,3 @@ desktop.ini
 .phpactor.json
 _ide_helper*.php
 .phpstorm.meta.php/
-
-# ==============================================================================
-# Laravel
-# ==============================================================================
-**/public/fonts-manifest.dev.json
-**/storage/*.key
-**/storage/pail/
